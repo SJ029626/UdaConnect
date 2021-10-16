@@ -30,15 +30,6 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./modules/frontend
-          file: ./modules/frontend/Dockerfile
-          platforms: linux/amd64
-          push: true
-          tags: sanyamj/udaconnect-app:latest
-      -
-        name: Build and push
-        uses: docker/build-push-action@v2
-        with:
           context: ./modules/api
           file: ./modules/api/Dockerfile
           platforms: linux/amd64
@@ -53,3 +44,12 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: sanyamj/udaconnect-api-person:latest
+      -
+        name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: ./modules/frontend
+          file: ./modules/frontend/Dockerfile
+          platforms: linux/amd64
+          push: true
+          tags: sanyamj/udaconnect-app:latest
