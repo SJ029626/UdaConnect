@@ -2,9 +2,7 @@ from datetime import datetime
 
 from app.udaconnect.models import Person
 from app.udaconnect.schemas import (
-    ConnectionSchema,
-    LocationSchema,
-    PersonSchema,
+    PersonSchema
 )
 from app.udaconnect.services import PersonService
 from flask import request

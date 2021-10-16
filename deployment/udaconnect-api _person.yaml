@@ -9,7 +9,7 @@ spec:
   - name: "5000"
     port: 5000
     targetPort: 5000
-    nodePort: 30001
+    nodePort: 30002
   selector:
     service: udaconnect-api
   type: NodePort
@@ -31,7 +31,7 @@ spec:
         service: udaconnect-api
     spec:
       containers:
-      - image: sanyamj/udaconnect-api:latest
+      - image: sanyamj/udaconnect-api_person:latest
         name: udaconnect-api
         imagePullPolicy: Always
         env:
