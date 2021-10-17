@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 from typing import Dict, List
 import json
 from flask import g
+from producer import g
 from app import db
 from app.udaconnect.models import Person
 from app.udaconnect.schemas import PersonSchema
