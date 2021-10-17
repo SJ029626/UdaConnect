@@ -17,7 +17,7 @@ api = Namespace("UdaConnect", description="Connections via geolocation.")  # noq
 
 # TODO: This needs better exception handling
 
-@api.route("/persons")
+@api.route("/persons", methods=['GET', 'POST'])
 class PersonsResource(Resource):
     @accepts(schema=PersonSchema)
     @responds(schema=PersonSchema)
@@ -32,7 +32,7 @@ class PersonsResource(Resource):
         return persons
 
 
-@api.route("/persons/<person_id>")
+@api.route("/persons/<person_id>", methods=['GET'])
 @api.param("person_id", "Unique ID for a given Person", _in="query")
 class PersonResource(Resource):
     @responds(schema=PersonSchema)
