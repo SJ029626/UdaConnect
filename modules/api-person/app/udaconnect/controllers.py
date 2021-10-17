@@ -6,22 +6,23 @@ from app.udaconnect.schemas import (
 )
 from app.udaconnect.services import PersonService
 from flask import request
+from kafka import KafkaProducer
+from flask import Flask, jsonify, request, g, Response
 from flask_accepts import accepts, responds
 from flask_restx import Namespace, Resource
 from typing import Optional, List
-from kafka import KafkaProducer
-from flask import Flask, jsonify, request, g, Response
 
 DATE_FORMAT = "%Y-%m-%d"
 
 api = Namespace("UdaConnect", description="Connections via geolocation.")  # noqa
 
 
+# TODO: This needs better exception handling
 @app.before_request
 def before_request():
     # Set up a Kafka producer
     TOPIC_NAME = 'person'
-    KAFKA_SERVER = '34.125.83.32:9092'
+    KAFKA_SERVER = 'localhost:9092'
     producer = KafkaProducer(bootstrap_servers=KAFKA_SERVER)
     # Setting Kafka to g enables us to use this
     # in other parts of our application
@@ -35,7 +36,6 @@ class PersonsResource(Resource):
     def post(self) -> Person:
         payload = request.get_json()
         new_person: Person = PersonService.create(payload)
-        kafka_data = json.dumps(new_person).encode()
         return new_person
 
     @responds(schema=PersonSchema, many=True)

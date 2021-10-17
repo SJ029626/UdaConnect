@@ -1,7 +1,8 @@
 import logging
 from datetime import datetime, timedelta
 from typing import Dict, List
-
+import json
+from .controllers import g
 from app import db
 from app.udaconnect.models import Person
 from app.udaconnect.schemas import PersonSchema
@@ -19,7 +20,11 @@ class PersonService:
         new_person.first_name = person["first_name"]
         new_person.last_name = person["last_name"]
         new_person.company_name = person["company_name"]
-
+        # Turn order_data into a binary string for Kafka
+        kafka_data = json.dumps(new_person).encode()
+        # Kafka producer has already been set up in Flask context
+        kafka_producer = g.kafka_producer
+        kafka_producer.send("items", kafka_data)
         db.session.add(new_person)
         db.session.commit()
 
