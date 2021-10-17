@@ -14,7 +14,7 @@ from flask_cors import CORS
 
 # Set up a Kafka producer
 TOPIC_NAME = 'person'
-KAFKA_SERVER = '34.125.83.32:9092'
+KAFKA_SERVER = 'localhost:9092'
 producer = KafkaProducer(bootstrap_servers=KAFKA_SERVER)
 
 logging.basicConfig(level=logging.WARNING)
