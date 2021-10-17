@@ -21,7 +21,8 @@ class PersonService:
         new_person.last_name = person["last_name"]
         new_person.company_name = person["company_name"]
         # Turn order_data into a binary string for Kafka
-        kafka_data = json.dumps(new_person).encode()
+        print(new_person)
+        kafka_data = json.loads(new_person).encode()
         # Kafka producer has already been set up in Flask context
         kafka_producer = g.kafka_producer
         kafka_producer.send("person", kafka_data)
