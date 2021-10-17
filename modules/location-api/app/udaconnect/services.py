@@ -40,3 +40,7 @@ class LocationService:
         db.session.commit()
 
         return new_location
+
+    @staticmethod
+    def retrieve_all() -> List[Location]:
+        return db.session.query(Location).all()
