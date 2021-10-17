@@ -18,7 +18,7 @@ api = Namespace("UdaConnect", description="Connections via geolocation.")  # noq
 
 
 # TODO: This needs better exception handling
-@app.before_request
+@api.before_request
 def before_request():
     # Set up a Kafka producer
     TOPIC_NAME = 'person'
