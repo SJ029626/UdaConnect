@@ -5,9 +5,7 @@ from app.udaconnect.schemas import (
     PersonSchema
 )
 from app.udaconnect.services import PersonService
-from flask import request
-from kafka import KafkaProducer
-from flask import g
+from flask import request, Response
 from flask_accepts import accepts, responds
 from flask_restx import Namespace, Resource
 from typing import Optional, List
@@ -18,15 +16,6 @@ api = Namespace("UdaConnect", description="Connections via geolocation.")  # noq
 
 
 # TODO: This needs better exception handling
-@api.before_request
-def before_request():
-    # Set up a Kafka producer
-    TOPIC_NAME = 'person'
-    KAFKA_SERVER = 'localhost:9092'
-    producer = KafkaProducer(bootstrap_servers=KAFKA_SERVER)
-    # Setting Kafka to g enables us to use this
-    # in other parts of our application
-    g.kafka_producer = producer
 
 
 @api.route("/persons", methods=['GET', 'POST'])
