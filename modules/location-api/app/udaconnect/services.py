@@ -14,6 +14,10 @@ logger = logging.getLogger("udaconnect-api")
 
 class LocationService:
     @staticmethod
+    def retrieve_all() -> List[Location]:
+        return db.session.query(Location).all()
+
+    @staticmethod
     def retrieve(location_id) -> Location:
         location, coord_text = (
             db.session.query(Location, Location.coordinate.ST_AsText())
@@ -40,7 +44,3 @@ class LocationService:
         db.session.commit()
 
         return new_location
-
-    @staticmethod
-    def retrieve_all() -> List[Location]:
-        return db.session.query(Location).all()
