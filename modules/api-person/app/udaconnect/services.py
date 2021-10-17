@@ -7,18 +7,15 @@ from app.udaconnect.models import Person
 from app.udaconnect.schemas import PersonSchema
 from geoalchemy2.functions import ST_AsText, ST_Point
 from sqlalchemy.sql import text
-from kafka import KafkaProducer
-from flask import g
+from kafka import KafkaConsumer, KafkaProducer
+from flask import g, request, jsonify
+from flask_cors import CORS
 
 
 # Set up a Kafka producer
 TOPIC_NAME = 'person'
-KAFKA_SERVER = '34.125.83.32:9092'
+KAFKA_SERVER = 'localhost:9092'
 producer = KafkaProducer(bootstrap_servers=KAFKA_SERVER)
-# Setting Kafka to g enables us to use this
-# in other parts of our application
-g.kafka_producer = producer
-
 
 logging.basicConfig(level=logging.WARNING)
 logger = logging.getLogger("udaconnect-api-person")
@@ -34,8 +31,9 @@ class PersonService:
         # Turn order_data into a binary string for Kafka
         kafka_data = json.dumps(str(new_person)).encode()
         # Kafka producer has already been set up in Flask context
-        kafka_producer = g.kafka_producer
+        kafka_producer = producer
         kafka_producer.send("person", kafka_data)
+        print('Kafka Request Successful')
         db.session.add(new_person)
         db.session.commit()
 
