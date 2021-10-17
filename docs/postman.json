@@ -1,0 +1,196 @@
+{
+	"info": {
+		"_postman_id": "df4d414c-6a9e-4624-829a-b4a5059ad019",
+		"name": "UdaConnect",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST CREATE Person",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\": 2, \"first_name\": \"Vaidya\",\n\"last_name\": \"rest\",\n\"company_name\": \"Digital Ocean\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://34.125.83.32:30002/api-person/persons",
+					"protocol": "http",
+					"host": [
+						"34",
+						"125",
+						"83",
+						"32"
+					],
+					"port": "30002",
+					"path": [
+						"api-person",
+						"persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST ADD Location",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"person_id\":8, \n\"longitude\": \"-120.240883\",\n\"latitude\": \"35.553\",\n\"creation_time\": \"2020-07-23 11:08:54.032651+05:30\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://34.125.83.32:30003/location-api/locations",
+					"protocol": "http",
+					"host": [
+						"34",
+						"125",
+						"83",
+						"32"
+					],
+					"port": "30003",
+					"path": [
+						"location-api",
+						"locations"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "POST ADD Location",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"person_id\":8, \n\"longitude\": \"-120.240883\",\n\"latitude\": \"35.553\",\n\"creation_time\": \"2020-07-23 11:08:54.032651+05:30\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.125.83.32:30003/location-api/locations",
+							"protocol": "http",
+							"host": [
+								"34",
+								"125",
+								"83",
+								"32"
+							],
+							"port": "30003",
+							"path": [
+								"location-api",
+								"locations"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "147"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/0.16.1 Python/3.7.12"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Oct 2021 10:46:02 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"latitude\": \"35.5529999999999973\",\n    \"creation_time\": \"2020-07-23T11:08:54.032651\",\n    \"longitude\": \"-120.2408829999999966\",\n    \"id\": 13,\n    \"person_id\": 8\n}"
+				}
+			]
+		},
+		{
+			"name": "GET Locations",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://34.125.83.32:30003/location-api/locations",
+					"protocol": "http",
+					"host": [
+						"34",
+						"125",
+						"83",
+						"32"
+					],
+					"port": "30003",
+					"path": [
+						"location-api",
+						"locations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Connections",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://34.125.83.32:30001/api/persons/4/connection",
+					"protocol": "http",
+					"host": [
+						"34",
+						"125",
+						"83",
+						"32"
+					],
+					"port": "30001",
+					"path": [
+						"api",
+						"persons",
+						"4",
+						"connection"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
