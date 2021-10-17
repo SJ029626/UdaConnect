@@ -2,12 +2,23 @@ import logging
 from datetime import datetime, timedelta
 from typing import Dict, List
 import json
-from app.udaconnect.producer import g
 from app import db
 from app.udaconnect.models import Person
 from app.udaconnect.schemas import PersonSchema
 from geoalchemy2.functions import ST_AsText, ST_Point
 from sqlalchemy.sql import text
+from kafka import KafkaProducer
+from flask import g
+
+
+# Set up a Kafka producer
+TOPIC_NAME = 'person'
+KAFKA_SERVER = '34.125.83.32:9092'
+producer = KafkaProducer(bootstrap_servers=KAFKA_SERVER)
+# Setting Kafka to g enables us to use this
+# in other parts of our application
+g.kafka_producer = producer
+
 
 logging.basicConfig(level=logging.WARNING)
 logger = logging.getLogger("udaconnect-api-person")
