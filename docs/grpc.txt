@@ -1,0 +1,26 @@
+The gRPC documentation for Person microservice have been created.
+The request has a payload with first name, last name, company and of course id.
+
+This python file is ready to send a request to the person microservice. 
+
+'''
+message PersonMsg {
+  int32 id = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string company_name = 4;
+}
+
+message PersonMsgList{
+    repeated PersonMsg persons = 1;
+}
+
+message Empty {
+
+}
+
+
+service PersonService {
+    rpc Get(Empty) returns (PersonMsgList);
+}
+'''
