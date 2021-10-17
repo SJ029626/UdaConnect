@@ -7,7 +7,7 @@ from app.udaconnect.schemas import (
 from app.udaconnect.services import PersonService
 from flask import request
 from kafka import KafkaProducer
-from flask import Flask, jsonify, request, g, Response
+from flask import g
 from flask_accepts import accepts, responds
 from flask_restx import Namespace, Resource
 from typing import Optional, List

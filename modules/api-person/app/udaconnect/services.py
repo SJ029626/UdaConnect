@@ -24,7 +24,7 @@ class PersonService:
         kafka_data = json.dumps(new_person).encode()
         # Kafka producer has already been set up in Flask context
         kafka_producer = g.kafka_producer
-        kafka_producer.send("items", kafka_data)
+        kafka_producer.send("person", kafka_data)
         db.session.add(new_person)
         db.session.commit()
 
