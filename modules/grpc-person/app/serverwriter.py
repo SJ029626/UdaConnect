@@ -5,7 +5,7 @@ import grpc_person_pb2
 import grpc_person_pb2_grpc
 import requests
 
-response = requests.get('http://34.125.20.206:30002/api-person/persons')
+response = requests.get('http://34.125.83.32:30002/api-person/persons')
 personss = response.json()
 
 
