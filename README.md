@@ -157,6 +157,20 @@ Your architecture diagram should focus on the services and how they talk to one 
 * Install K3S
 * Install JRE Default
 * Install Kafka
+* Install HELM
+* For Installing Kafka, follow the following steps:
+```
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm install zookeeper bitnami/zookeeper \
+  --set replicaCount=3 \
+  --set auth.enabled=false \
+  --set allowAnonymousLogin=true
+
+helm install kafka bitnami/kafka \
+  --set zookeeper.enabled=false \
+  --set replicaCount=3 \
+  --set externalZookeeper.servers=ZOOKEEPER-SERVICE-NAME [ replacing the ZOOKEEPER-SERVICE-NAME placeholder with the Apache Zookeeper service name obtained in the step above]
+```
 * After all of the installation clone the repo
 * After cloning the whole repo, deploy by navigating inside the folder through command.
 ```
