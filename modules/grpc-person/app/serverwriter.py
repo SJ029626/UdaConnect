@@ -12,16 +12,14 @@ personss = response.json()
 class PersonServicer(grpc_person_pb2_grpc.PersonServiceServicer):
 
     def Get(self, request, context):
-        print('Server Recieved a request')
-        person_list = []
-        for person_dict in personss:
-            person_list.append(grpc_person_pb2.PersonMsg(id=person_dict['id'],
-                               first_name=person_dict['first_name'],
-                               last_name=person_dict['last_name'],
-                               company_name=person_dict['company_name']))
+        person_list = grpc_person_pb2.PersonMsg(
+                        id='id',
+                        first_name='first_name',
+                        last_name='last_name',
+                        company_name='company_name')
 
         response = grpc_person_pb2.PersonMsgList()
-        response.persons.extend(person_list)
+        response.personss.extend(person_list)
 
         print('Delivered the request successfully')
         return response

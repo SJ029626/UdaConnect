@@ -45,15 +45,6 @@ jobs:
           push: true
           tags: sanyamj/udaconnect-api-person:latest
       -
-        name: Location API Build
-        uses: docker/build-push-action@v2
-        with:
-          context: ./modules/location-api
-          file: ./modules/location-api/Dockerfile
-          platforms: linux/amd64
-          push: true
-          tags: sanyamj/udaconnect-location-api:latest
-      -
         name: Frontend Build
         uses: docker/build-push-action@v2
         with:
