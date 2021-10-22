@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"id\": 2, \"first_name\": \"Vaidya\",\n\"last_name\": \"rest\",\n\"company_name\": \"Digital Ocean\"}",
+					"raw": "{\n    \"id\": 2,\n    \"first_name\": \"Vaidya\",\n    \"last_name\": \"rest\",\n    \"company_name\": \"Digital Ocean\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -52,7 +52,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://34.125.83.32:30003/location-api/locations",
+					"raw": "http://34.125.83.32:30001/api/locations",
 					"protocol": "http",
 					"host": [
 						"34",
@@ -60,73 +60,14 @@
 						"83",
 						"32"
 					],
-					"port": "30003",
+					"port": "30001",
 					"path": [
-						"location-api",
+						"api",
 						"locations"
 					]
 				}
 			},
-			"response": [
-				{
-					"name": "POST ADD Location",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\"person_id\":8, \n\"longitude\": \"-120.240883\",\n\"latitude\": \"35.553\",\n\"creation_time\": \"2020-07-23 11:08:54.032651+05:30\"}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://34.125.83.32:30003/location-api/locations",
-							"protocol": "http",
-							"host": [
-								"34",
-								"125",
-								"83",
-								"32"
-							],
-							"port": "30003",
-							"path": [
-								"location-api",
-								"locations"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Content-Length",
-							"value": "147"
-						},
-						{
-							"key": "Access-Control-Allow-Origin",
-							"value": "*"
-						},
-						{
-							"key": "Server",
-							"value": "Werkzeug/0.16.1 Python/3.7.12"
-						},
-						{
-							"key": "Date",
-							"value": "Sun, 17 Oct 2021 10:46:02 GMT"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"latitude\": \"35.5529999999999973\",\n    \"creation_time\": \"2020-07-23T11:08:54.032651\",\n    \"longitude\": \"-120.2408829999999966\",\n    \"id\": 13,\n    \"person_id\": 8\n}"
-				}
-			]
+			"response": []
 		},
 		{
 			"name": "GET Locations",
@@ -150,7 +91,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://34.125.83.32:30003/location-api/locations",
+					"raw": "http://34.125.83.32:30001/api/locations",
 					"protocol": "http",
 					"host": [
 						"34",
@@ -158,9 +99,9 @@
 						"83",
 						"32"
 					],
-					"port": "30003",
+					"port": "30001",
 					"path": [
-						"location-api",
+						"api",
 						"locations"
 					]
 				}

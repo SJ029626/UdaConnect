@@ -1,5 +1,4 @@
-2 services have been refactored which are person and location.
+2 services have been refactored which are person.
 
 person service have been refactored as to separate the all operation and work independtly grpc is used behind so as to validate all the fields. Kafka is put behind it so that everytime a new person is created it can be saved into database at the same time.
 
-Location service has been refactored so as to separate the all operation of it from the main api and is been connected with person api due to dependency of the person id.
